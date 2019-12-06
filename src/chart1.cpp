@@ -698,6 +698,7 @@ float                     g_toolbar_scalefactor;
 float                     g_compass_scalefactor;
 bool                      g_bShowMenuBar;
 bool                      g_bShowCompassWin;
+bool                      g_BoatCenterButton;
 
 bool                      g_benable_rotate;
 
@@ -5327,6 +5328,7 @@ void MyFrame::SetbFollow( ChartCanvas *cc )
     cc->m_bFollow = true;
 
     cc->SetCanvasToolbarItemState( ID_FOLLOW, true );
+    cc->UpdateFollowButtonState();
     SetMenubarItemState( ID_MENU_NAV_FOLLOW, true );
     
     #ifdef __OCPN__ANDROID__
@@ -5351,6 +5353,7 @@ void MyFrame::ClearbFollow( ChartCanvas *cc )
     cc->m_bFollow = false;
     cc->SetCanvasToolbarItemState(ID_FOLLOW, false );
     SetMenubarItemState( ID_MENU_NAV_FOLLOW, false );
+    cc->UpdateFollowButtonState();
 
     DoChartUpdate();
     cc->ReloadVP();
